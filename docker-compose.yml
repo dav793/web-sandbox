@@ -1,0 +1,27 @@
+version: '3.0' 
+
+services:
+  client:
+    container_name: ${CLIENT_CONTAINER_NAME}
+    image: ${CLIENT_CONTAINER_NAME}
+    build: 
+      context: ${WORKING_DIR}
+      dockerfile: Dockerfile
+    restart: "no"
+    networks:
+      - project-network
+    volumes:
+      - project-volume:/projects
+    ports:
+      - "4200:4200"
+    command: [ "tail", "-f", "/dev/null" ]
+    
+volumes:
+  project-volume:
+    external: true
+    name: ${VOLUME_NAME}
+
+networks:
+  project-network:
+    external: true
+    name: ${NETWORK_NAME}
