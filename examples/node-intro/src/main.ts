@@ -59,7 +59,7 @@ const manejadorDeErrores = function(error: string) {
     throw new Error(error);
 };
 
-cargarDatos(manejadorDeErrores);
+// cargarDatos(manejadorDeErrores);
 
 
 /*
