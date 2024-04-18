@@ -140,3 +140,103 @@ for (const perro of perros) {
 }
 
 console.log(perrosPorColor);
+
+/*
+    Ejercicios:
+
+    Abajo verá tipos de datos llamados 'ItemMenu' y 'Categoria', un arreglo llamado 'menu', y un objeto llamado 'promociones'. 
+    Utilizando estos recursos, complete lo siguiente:
+
+    1.  Cree una función 'getItemPorNombre' que encuentre un ítem del menú por nombre. El nombre es un parámetro de la función, y la función devuelve el ítem
+        encontrado si existe.
+
+    2.  Cree una variable 'bebidas' que contenga todos ítems en la categoría 'bebida'.
+
+    3.  Cree una variable 'menuPorPrecio' que contenga el menú ordenado por precio descendentemente.
+
+    4.  Cree una variable 'opciones' que contenga únicamente los nombres de los ítemes del menú, ordenados alfabéticamente.
+
+    5.  Suponga que los descuentos se suman (si varios aplican para el mismo item). Cree una variable 'menuFullDescuentos' que contenga los items del menú con todos los descuentos aplicados.
+
+*/
+
+type Categoria = 'plato fuerte' | 'adicional' | 'postre' | 'bebida';
+
+type ItemMenu = {
+    nombre: string,
+    categoria: Categoria,
+    precio: number
+}
+
+const menu: ItemMenu[] = [
+    {
+        nombre: 'hamburguesa',
+        categoria: 'plato fuerte',
+        precio: 5000
+    },
+    {
+        nombre: 'coca cola',
+        categoria: 'bebida',
+        precio: 1000
+    },
+    {
+        nombre: 'pinto con huevo',
+        categoria: 'plato fuerte',
+        precio: 3000
+    },
+    {
+        nombre: 'crepa de pollo',
+        categoria: 'plato fuerte',
+        precio: 3500
+    },
+    {
+        nombre: 'papas fritas',
+        categoria: 'adicional',
+        precio: 1350
+    },
+    {
+        nombre: 'tres leches',
+        categoria: 'postre',
+        precio: 1800
+    },
+    {
+        nombre: 'cafe',
+        categoria: 'bebida',
+        precio: 800
+    },
+    {
+        nombre: 'horchata',
+        categoria: 'bebida',
+        precio: 800
+    },
+    {
+        nombre: 'flan de coco',
+        categoria: 'postre',
+        precio: 1100
+    },
+    {
+        nombre: 'sopa azteca',
+        categoria: 'plato fuerte',
+        precio: 2500
+    }
+];
+
+const promociones: { 
+    [ key: string ]: { 
+        categoria: Categoria, 
+        porcentajeDescuento: number 
+    }
+} = {
+    clienteFrecuente: {
+        categoria: 'plato fuerte',
+        porcentajeDescuento: 15
+    },
+    semanaSanta: {
+        categoria: 'plato fuerte',
+        porcentajeDescuento: 10
+    },
+    domingoEnLaTarde: {
+        categoria: 'postre',
+        porcentajeDescuento: 20
+    },
+};
