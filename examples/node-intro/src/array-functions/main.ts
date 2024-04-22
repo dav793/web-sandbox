@@ -124,22 +124,59 @@ const perros: Perro[] = [
 // console.log(perrosOrdenados);
 
 // groupby manual
-const llaveDeAgrupacion = 'color';
-const perrosPorColor: {
-    [key: string]: Perro[]
-} = {};
+// const llaveDeAgrupacion = 'color';
+// const perrosPorColor: {
+//     [key in Color]?: Perro[]
+// } = {};
 
-for (const perro of perros) {
+// for (const perro of perros) {
     
-    const colorDePerro = perro[ llaveDeAgrupacion ];
+//     const colorDePerro = perro[ llaveDeAgrupacion ];
 
-    if ( !(colorDePerro in perrosPorColor) )
-        perrosPorColor[ colorDePerro ] = [];
+//     if ( !(colorDePerro in perrosPorColor) )
+//         perrosPorColor[ colorDePerro ] = [];
 
-    perrosPorColor[ colorDePerro ].push( perro );
-}
+//     perrosPorColor[ colorDePerro ].push( perro );
+// }
 
-console.log(perrosPorColor);
+// console.log(perrosPorColor);
+
+// destructuring con arreglos (en lugar de concat)
+// const perrosMasUno = perros.concat({ nombre: 'Khaly', color: 'cafe', edad: 2 });
+// const perrosMasUno = [ ...perros, { nombre: 'Khaly', color: 'cafe', edad: 2 } ];
+// console.log( perrosMasUno );
+
+// destructuring con objetos (en lugar de Object.assign)
+// const perroConEntrenado = Object.assign({}, perros[0], { entrenado: true });
+// const perroConEntrenado = { ...perros, entrenado: true };
+// console.log(perroConEntrenado);
+
+// destructuring con argumentos de una funcion
+// function miFunc(a: number, b: number, c: number) {
+//     return a + b + c;
+// }
+
+// const suma = miFunc(1, 2, 3);
+
+// const args = [ 1, 2, 3 ];
+// // @ts-ignore
+// const suma = miFunc( ...args );
+// console.log(suma);
+
+// reduce
+// const listaDePrecios = [ 1000, 2000, 7000 ];
+// const sumaDePrecios = listaDePrecios.reduce( (acc, cur) => cur + acc, 0 );
+// console.log( sumaDePrecios );
+
+// const listaDeCompras = [
+//     { nombre: 'manzana', precio: 500 },
+//     { nombre: 'pan', precio: 1000 },
+//     { nombre: 'atun', precio: 1500 }
+// ];
+// const sumaDePrecios = listaDeCompras.reduce( (acc, cur) => acc + cur.precio, 0 );
+// console.log( sumaDePrecios );
+
+
 
 /*
     Ejercicios:
