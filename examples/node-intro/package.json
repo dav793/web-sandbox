@@ -4,10 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node dist/main.js",
-    "build-and-run:native": "tsc && concurrently --kill-others \"tsc --watch\" \"nodemon dist/main.js\"",
-    "build-and-run:docker": "tsc && concurrently --kill-others \"tsc --watch\" \"nodemon -L --polling-interval 100 dist/main.js\"",
+    "start": "npm run start-types",
+    "build-and-run:native": "tsc && concurrently --kill-others \"tsc --watch\" \"nodemon dist/types/main.js\"",
+    "build-and-run:docker": "tsc && concurrently --kill-others \"tsc --watch\" \"nodemon -L --polling-interval 100 dist/types/main.js\"",
+    "start-types": "tsc && node dist/types/main.js",
+    "start-interfaces": "tsc && node dist/interfaces/main.js",
     "start-array-functions": "tsc && node dist/array-functions/main.js",
+    "start-classes": "tsc && node dist/classes/main.js",
+    "start-modules": "tsc && node dist/modules/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

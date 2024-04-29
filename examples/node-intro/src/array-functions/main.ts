@@ -277,3 +277,15 @@ const promociones: {
         porcentajeDescuento: 20
     },
 };
+
+for (const key in promociones) {
+    console.log( promociones[key] );
+}
+
+// menu.map(item => {
+
+//     for (const promo in promociones) {
+//         console.log(promo);
+//     }
+
+// });
