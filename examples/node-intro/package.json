@@ -12,6 +12,7 @@
     "start-array-functions": "tsc && node dist/array-functions/main.js",
     "start-classes": "tsc && node dist/classes/main.js",
     "start-modules": "tsc && node dist/modules/main.js",
+    "start-promises": "tsc && node dist/promises/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
