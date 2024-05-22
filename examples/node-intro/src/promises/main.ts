@@ -99,3 +99,51 @@
 //     console.log('B');
 // }
 // exec();
+
+/*
+    Ejercicios:
+
+    1. Cree un promise que, luego de esperar 2 segundos, tenga 50% de probabilidad de resolverse con el string "Exito" 
+    y 50% de probabilidad de ser rechazado con el mensaje "Error!".
+
+    Luego suscríbase al promise e imprima el resultado en consola. Esto se puede hacer de dos maneras:
+    A:
+        miPromise.then(
+            resultado => console.log(resultado),
+            error => console.error(error)
+        );
+
+    B:
+        miPromise
+            .then( resultado => console.log(resultado) )
+            .catch( error => console.error(error) )
+
+    Pista: Para la probabilidad puede usar el siguiente snippet:
+        if ( Math.random() > 0.5 )
+            // caso de éxito
+        else
+            // caso de fallo
+
+    
+    2. Utilice encadenamiento de promises para pasar un input numérico por la siguiente serie ordenada de operaciones matemáticas:
+            1: Multiplicar por 5
+            2: Restar 9
+            3: Dividir entre 6
+
+    Como ejemplo, si el input es 15 el resultado debería ser ((15 * 5) - 9) / 6 = 11
+
+    Nota: Para poder utilizar encadenamiento de promises, cada operación debe existir como su propio promise. Es decir, el callback
+    de cada "then" debe retornar un promise que ejecute la operación que sigue en la lista.
+
+
+    3. Recupere en paralelo 3 'todos' del API público en jsonplaceholder.typicode.com. Luego convierta cada respuesta de JSON 
+    a un objeto de Javascript e imprimalos en consola.
+
+    Puede usar los siguientes links:
+            - https://jsonplaceholder.typicode.com/todos/1
+            - https://jsonplaceholder.typicode.com/todos/2
+            - https://jsonplaceholder.typicode.com/todos/3
+
+    Pista: Utilice Promise.all() para ejecutar los promises en paralelo.
+
+*/
