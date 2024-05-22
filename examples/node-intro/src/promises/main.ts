@@ -146,4 +146,9 @@
 
     Pista: Utilice Promise.all() para ejecutar los promises en paralelo.
 
+    
+    4. Escriba un promise que resuelva con el string "Hola" y otro promise que resuelva con el string " mundo". 
+    Luego, escriba una función utilizando async/await que espere por ambos promises, concatene ambos resultados y los 
+    imprima en consola. Finalmente, invoque la función y verifique que imprima "Hola mundo".
+
 */
