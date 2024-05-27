@@ -62,7 +62,7 @@
 // console.log('estoy haciendo cosas');
 
 // Fetch API data
-// fetch('https://jsonplaceholder.typicode.com/todos')
+// const miPromise = fetch('https://jsonplaceholder.typicode.com/todos')
 //     .then( response => response.json() )
 //     .then( json => console.log(json) );
 
