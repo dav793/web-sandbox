@@ -152,3 +152,13 @@
     imprima en consola. Finalmente, invoque la función y verifique que imprima "Hola mundo".
 
 */
+
+// Solucion ej. 2:
+function operarNumero(x: number): Promise<number> {
+    return Promise.resolve(x * 5)
+        .then(x => x - 9)
+        .then(x => x / 6);
+}
+
+operarNumero(15)
+    .then(x => console.log(x));
