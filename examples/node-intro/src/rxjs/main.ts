@@ -220,3 +220,4 @@ Ejercicios:
    únicamente el salario de Daniel, mientras que la segunda suscripción debe imprimir únicamente el salario de Natalia. 
    Pista: Utilice setTimeout antes de la primera suscripción y utilice unsubscribe en la segunda suscripción.
 
+*/
