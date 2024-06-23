@@ -173,3 +173,50 @@ from([1, 2, '$', 4])
 		next: x => console.log(x),
 		error: err => console.error(err)
 	});
+
+
+/* 
+Ejercicios:
+
+1. Cree una función que reciba un número Q como parámetro y retorne un Observable que espere 1 segundo y luego:
+	- Emita Q si Q es >= 0
+	- Emita un error si Q es < 0
+   
+   Luego, suscríbase al observable e imprima el resultado, ya sea el valor emitido o el error. 
+   Para crear el observable utilice new Observable().
+
+2. Cree una función igual a la anterior, pero creando el observable con los operadores of/from y un pipe con un operador map.
+
+3. Considere el siguiente arreglo:
+
+	const empleados = [
+		{
+			id: 1,
+			nombre: 'Natalia',
+			salario: 1500,
+			bonificacion: 0.2
+		},
+		{
+			id: 2,
+			nombre: 'Gerardo',
+			salario: 1000,
+			bonificacion: 0
+		},
+		{
+			id: 3,
+			nombre: 'Daniel',
+			salario: 1350,
+			bonificación: 0.3
+		}
+	];
+
+   Cree una función que retorne un Subject (hot Observable) que emita cada elemento del arrelgo anterior, 
+   con un segundo de retraso entre entre cada emisión. El objetivo es imprimir para cada emisión la cadena
+   `${nombre} recibe ${salario final}` donde el salario final es el salario del empleado + su bonificación la cual
+   se calcula como porcentaje de su salario base. Para esto, utilice un pipe con un map antes de suscribirse al
+   Subject.
+   
+4. Tomando el Subject creado en el punto anterior, suscríbase dos veces al Subject. La primera suscripción debe imprimir
+   únicamente el salario de Daniel, mientras que la segunda suscripción debe imprimir únicamente el salario de Natalia. 
+   Pista: Utilice setTimeout antes de la primera suscripción y utilice unsubscribe en la segunda suscripción.
+
