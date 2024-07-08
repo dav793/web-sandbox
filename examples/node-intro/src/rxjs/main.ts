@@ -1,4 +1,4 @@
-import { Observable, Subject, from, of, interval, map, take, takeUntil, filter, catchError, switchMap } from 'rxjs';
+import { Observable, Subject, from, of, interval, map, take, takeUntil, filter, catchError, switchMap, concatMap, mergeMap } from 'rxjs';
 
 /*
 Observables:
@@ -148,31 +148,31 @@ Observables:
 // 	});
 
 // Ej10: Manejo de errores - pipes (continuación)
-from([1, 2, '$', 4])
-	.pipe(
-		switchMap(x => {
+// from([1, 2, '$', 4])
+// 	.pipe(
+// 		switchMap(x => {
 
-			return of(x).pipe(
-				filter(x => {
-					if (typeof x === 'number')
-						return true;
+// 			return of(x).pipe(
+// 				filter(x => {
+// 					if (typeof x === 'number')
+// 						return true;
 				
-					throw new Error(`${x} is not a number`);
-				}),
-				catchError(err => {
-					console.error(err);	// manejar el error
+// 					throw new Error(`${x} is not a number`);
+// 				}),
+// 				catchError(err => {
+// 					console.error(err);	// manejar el error
 		
-					return of(undefined);
-				})
-			);
+// 					return of(undefined);
+// 				})
+// 			);
 
-		}),
-		filter(x => typeof x === 'number')
-	)
-	.subscribe({
-		next: x => console.log(x),
-		error: err => console.error(err)
-	});
+// 		}),
+// 		filter(x => typeof x === 'number')
+// 	)
+// 	.subscribe({
+// 		next: x => console.log(x),
+// 		error: err => console.error(err)
+// 	});
 
 
 /* 
@@ -221,3 +221,25 @@ Ejercicios:
    Pista: Utilice setTimeout antes de la primera suscripción y utilice unsubscribe en la segunda suscripción.
 
 */
+
+// Observable con map
+// from([ 1, 2, 3, 4 ])
+// 	.pipe(
+// 		map(x => x + 5)
+// 	)
+// 	.subscribe(x => console.log(x));
+
+// Observable con switchMap
+// from([ 1, 2, 3, 4 ])
+// 	.pipe(
+// 		switchMap(x => of(x + 5))
+// 	)
+// 	.subscribe(x => console.log(x));
+
+// Estructura del observable anterior
+// Observable<[
+// 	1,	=> Observable<1 + 5>
+// 	2,	=> Observable<2 + 5>
+// 	3,	=> Observable<3 + 5>
+// 	4	=> Observable<4 + 5>
+// ]>
