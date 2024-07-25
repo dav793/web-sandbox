@@ -25,6 +25,7 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
+    "nanoid": "^5.0.7",
     "rxjs": "^7.8.1"
   }
 }

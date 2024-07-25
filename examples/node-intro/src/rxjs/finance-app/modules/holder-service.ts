@@ -1,10 +1,19 @@
 
+import { Observable, of } from 'rxjs';
+
 export type Holder = {
     id: string,
     name: string
 }
 
 export class HolderService {
+
+    static GetHolder(id: string): Observable<Holder | undefined> {
+
+        return of(
+            mockHolders.find( holder => holder.id === id )
+        );
+    } 
 
 }
 
