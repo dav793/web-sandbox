@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
-        "module": "nodenext",
+        "target": "es2022",
+        "module": "es2022",
+        "moduleResolution": "node",
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,

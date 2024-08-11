@@ -2,7 +2,6 @@
   "name": "node-intro",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "npm run start-types",
     "build-and-run:native": "tsc && concurrently --kill-others \"tsc --watch\" \"nodemon dist/types/main.js\"",
@@ -14,7 +13,6 @@
     "start-modules": "tsc && node dist/modules/main.js",
     "start-promises": "tsc && node dist/promises/main.js",
     "start-rxjs": "tsc && node dist/rxjs/main.js",
-    "start-finance-app": "tsc && node dist/rxjs/finance-app/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -25,7 +23,6 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "nanoid": "^5.0.7",
     "rxjs": "^7.8.1"
   }
 }

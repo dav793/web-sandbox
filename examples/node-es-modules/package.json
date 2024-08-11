@@ -1,0 +1,17 @@
+{
+  "name": "es-modules",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "start": "npm run start-finance-app",
+    "start-finance-app": "tsc && node dist/finance-app/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nanoid": "^5.0.7",
+    "rxjs": "^7.8.1"
+  }
+}

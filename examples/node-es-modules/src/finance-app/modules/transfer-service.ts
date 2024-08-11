@@ -1,8 +1,8 @@
 
 import { Observable, of, forkJoin, switchMap, map } from 'rxjs';
-// import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid';
 
-import { Account, AccountService } from './account-service';
+import { Account, AccountService } from './account-service.js';
 
 export type Transfer = {
     id: string,
@@ -38,7 +38,7 @@ export class TransferService {
             switchMap(([ sender, recipient ]) => {
 
                 return of({
-                    id: '',
+                    id: nanoid(8),
                     senderId: sender.id,
                     recipientId: recipient.id,
                     amount

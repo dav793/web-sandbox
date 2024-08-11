@@ -1,10 +1,10 @@
 
-import { retry, timer } from 'rxjs';
+import { retry, switchMap, timer } from 'rxjs';
 
-import { HolderService } from './modules/holder-service';
-import { AccountService } from './modules/account-service';
-import { TransferService } from './modules/transfer-service';
-import { CurrencyService } from './modules/currency-service';
+import { HolderService } from './modules/holder-service.js';
+import { AccountService } from './modules/account-service.js';
+import { TransferService } from './modules/transfer-service.js';
+import { CurrencyService } from './modules/currency-service.js';
 
 // AccountService.PrintAllAccounts()
 //     .subscribe(() => {});
@@ -23,4 +23,3 @@ AccountService.GetAccountErrorProne('1')
         next: x => console.log(x),
         error: err => console.error(err)
     });
-

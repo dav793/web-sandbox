@@ -1,4 +1,18 @@
-import { Observable, Subject, from, of, interval, map, take, takeUntil, filter, catchError, switchMap, concatMap, mergeMap } from 'rxjs';
+import { 
+	Observable, 
+	Subject, 
+	from, 
+	of, 
+	interval, 
+	map, 
+	take, 
+	takeUntil, 
+	filter, 
+	catchError, 
+	switchMap, 
+	concatMap, 
+	mergeMap 
+} from 'rxjs';
 
 /*
 Observables:

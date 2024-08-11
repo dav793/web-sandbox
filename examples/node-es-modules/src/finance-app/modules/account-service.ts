@@ -1,7 +1,7 @@
 
 import { Observable, of, map, throwError, switchMap, tap } from 'rxjs';
 
-import { HolderService } from './holder-service';
+import { HolderService } from './holder-service.js';
 
 export type Account = {
     id: string,
