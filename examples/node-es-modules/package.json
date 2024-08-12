@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "npm run start-finance-app",
-    "start-finance-app": "tsc && node dist/finance-app/main.js",
+    "start-finance-app": "tsc && node dist/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,5 +13,8 @@
   "dependencies": {
     "nanoid": "^5.0.7",
     "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
   }
 }

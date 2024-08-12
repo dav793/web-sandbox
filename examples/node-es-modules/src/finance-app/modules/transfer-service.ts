@@ -1,5 +1,5 @@
 
-import { Observable, of, forkJoin, switchMap, map } from 'rxjs';
+import { Observable, of, forkJoin, switchMap, map, throwError } from 'rxjs';
 import { nanoid } from 'nanoid';
 
 import { Account, AccountService } from './account-service.js';
@@ -22,28 +22,54 @@ export class TransferService {
 
     static CreateTransfer(senderId: string, recipientId: string, amount: number): Observable<Transfer> {
 
-        // forkJoin ejecuta de forma paralela varios observables
-        // https://rxjs.dev/api/index/function/forkJoin
-        return forkJoin({
-            sender: AccountService.GetAccount(senderId),
-            recipient: AccountService.GetAccount(recipientId)
-        }).pipe(
+        return of(undefined).pipe(
+
+            switchMap(() => {
+                if (amount <= 0)
+                    return throwError( () => new Error(`Invalid amount`) );
+                return of(undefined);
+            }),
+
+            switchMap(() => {
+
+                // forkJoin ejecuta de forma paralela varios observables
+                // https://rxjs.dev/api/index/function/forkJoin
+                return forkJoin({
+                    sender: AccountService.GetAccount(senderId),
+                    recipient: AccountService.GetAccount(recipientId)
+                });
+            }),
+
+            // monedas
+
             switchMap(({ sender, recipient }) => {
 
+                if (sender.balance < amount)
+                    return throwError( () => new Error('Insufficient funds') );
+                return of({ sender, recipient });
+            }),
+
+            switchMap(({ sender, recipient }) => {
                 return forkJoin([
                     AccountService.SetBalance(sender.id, sender.balance - amount),
                     AccountService.SetBalance(recipient.id, recipient.balance + amount)
                 ]);
             }),
+
             switchMap(([ sender, recipient ]) => {
 
-                return of({
+                const transfer = {
                     id: nanoid(8),
                     senderId: sender.id,
                     recipientId: recipient.id,
                     amount
-                });
+                };
+
+                mockTransfers.push(transfer);
+
+                return of(transfer);
             })
+
         );
     }
 }

@@ -1,5 +1,5 @@
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, forkJoin, map } from 'rxjs';
 
 export type Currency = {
     id: string,
@@ -29,6 +29,21 @@ export class CurrencyService {
         if ( !currencyRate )
             return of( undefined );
         return of( currencyRate )
+    }
+
+    static Convert(from: string, to: string, amount: number): Observable<number> {
+
+        return forkJoin([
+            CurrencyService.GetExchangeRate(from),
+            CurrencyService.GetExchangeRate(to)
+        ]).pipe(
+            map(([ fromRate, toRate ]) => {
+
+                // USD to other : multiply by rate
+                // Other to USD : divide by rate
+                return amount * fromRate / toRate;
+            })
+        );
     }
 
 };
