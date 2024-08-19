@@ -4,7 +4,8 @@ import { retry, switchMap, timer, forkJoin } from 'rxjs';
 import { HolderService } from './modules/holder-service.js';
 import { AccountService } from './modules/account-service.js';
 import { TransferService } from './modules/transfer-service.js';
-import { CurrencyService } from './modules/currency-service.js';
+import { CurrencyService, CurrencyCode } from './modules/currency-service.js';
+import { CurrencyUtil } from './modules/currency-util.js';
 
 // AccountService.PrintAllAccounts()
 //     .subscribe(() => {});
@@ -44,5 +45,9 @@ forkJoin([
     CurrencyService.Convert('CRC', 'USD', 100000),
     CurrencyService.Convert('EUR', 'CRC', 100)
 ]).subscribe(([r1, r2, r3]) => {
-    console.log(r1.toFixed(2), r2.toFixed(2), r3.toFixed(2));
+    console.log(
+        CurrencyUtil.Format( r1, 'CRC' ),
+        CurrencyUtil.Format( r2, 'USD' ),
+        CurrencyUtil.Format( r3, 'CRC' )
+    );
 });

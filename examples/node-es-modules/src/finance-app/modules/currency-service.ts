@@ -1,16 +1,23 @@
 
 import { Observable, of, forkJoin, map } from 'rxjs';
 
+const CURRENCY_CODE = {
+    'USD': 'USD', 
+    'CRC': 'CRC',
+    'EUR': 'EUR'
+} as const;
+export type CurrencyCode = keyof typeof CURRENCY_CODE;
+
 export type Currency = {
     id: string,
-    code: string,
+    code: CurrencyCode,
     name: string,
     symbol: string
 };
 
 export class CurrencyService {
 
-    static GetCurrency(code: string): Observable<Currency | undefined> {
+    static GetCurrency(code: CurrencyCode): Observable<Currency | undefined> {
         
         return of(
             mockCurrencies.find( currency => currency.code === code )
@@ -22,7 +29,7 @@ export class CurrencyService {
         return of( defaultCurrencyCode );
     }
 
-    static GetExchangeRate(code: string): Observable<number | undefined> {
+    static GetExchangeRate(code: CurrencyCode): Observable<number | undefined> {
 
         const currencyRate = exchangeRates[code];
 
@@ -31,7 +38,7 @@ export class CurrencyService {
         return of( currencyRate )
     }
 
-    static Convert(from: string, to: string, amount: number): Observable<number> {
+    static Convert(from: CurrencyCode, to: CurrencyCode, amount: number): Observable<number> {
 
         return forkJoin([
             CurrencyService.GetExchangeRate(from),
@@ -69,7 +76,7 @@ const mockCurrencies: Currency[] = [
     }
 ];
 
-const defaultCurrencyCode = 'USD';
+const defaultCurrencyCode: CurrencyCode = 'USD';
 
 const exchangeRates: { 
     [code: string]: number 
