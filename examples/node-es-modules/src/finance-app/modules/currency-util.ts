@@ -11,5 +11,4 @@ export class CurrencyUtil {
             currency: currencyCode as Dinero.Currency
         }).toFormat(`$0,0.00`);
     }
-
 }

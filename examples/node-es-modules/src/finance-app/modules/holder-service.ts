@@ -13,7 +13,7 @@ export class HolderService {
         return of(
             mockHolders.find( holder => holder.id === id )
         );
-    } 
+    }
 
 }
 

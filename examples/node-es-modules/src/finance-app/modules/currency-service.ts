@@ -2,7 +2,7 @@
 import { Observable, of, forkJoin, map } from 'rxjs';
 
 const CURRENCY_CODE = {
-    'USD': 'USD', 
+    'USD': 'USD',
     'CRC': 'CRC',
     'EUR': 'EUR'
 } as const;
@@ -78,8 +78,8 @@ const mockCurrencies: Currency[] = [
 
 const defaultCurrencyCode: CurrencyCode = 'USD';
 
-const exchangeRates: { 
-    [code: string]: number 
+const exchangeRates: {
+    [code: string]: number
 } = {
     'USD': 1,
     'EUR': 1.08,
