@@ -1,12 +1,13 @@
 
 import { Observable, of, map, throwError, switchMap, tap } from 'rxjs';
 
-import { HolderService } from './holder-service.js';
+import { CurrencyCode } from './currency-service.js';
+import { CurrencyUtil } from './currency-util.js';
 
 export type Account = {
     id: string,
     holder: string,
-    currency: string,
+    currency: CurrencyCode,
     balance: number
 };
 
@@ -53,7 +54,11 @@ export class AccountService {
     static AccountToString(account: Account | undefined): string {
         if ( !account )
             return `Invalid account`;
-        return `ACC: (${account.id}), currency: ${account.currency}, balance: ${account.balance}`;
+        return `
+            ACC: (${ account.id }), 
+            currency: ${ account.currency }, 
+            balance: ${ CurrencyUtil.Format( account.balance, account.currency ) }
+        `.replace(/\n/g, '').replace(/\s+/g, ' ');
     }
 
     static PrintAllAccounts(): Observable<void> {
