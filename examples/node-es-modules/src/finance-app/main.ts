@@ -4,7 +4,7 @@ import { retry, switchMap, timer, forkJoin } from 'rxjs';
 import { HolderService } from './modules/holder-service.js';
 import { AccountService } from './modules/account-service.js';
 import { TransferService } from './modules/transfer-service.js';
-import { CurrencyService, CurrencyCode } from './modules/currency-service.js';
+import { CurrencyService, CurrencyCode, CURRENCY_CODE } from './modules/currency-service.js';
 import { CurrencyUtil } from './modules/currency-util.js';
 
 // AccountService.PrintAllAccounts()
@@ -40,14 +40,30 @@ import { CurrencyUtil } from './modules/currency-util.js';
 // });
 
 // @ts-ignore
-forkJoin([
-    CurrencyService.Convert('USD', 'CRC', 5000),
-    CurrencyService.Convert('CRC', 'USD', 100000),
-    CurrencyService.Convert('EUR', 'CRC', 100)
-]).subscribe(([r1, r2, r3]) => {
-    console.log(
-        CurrencyUtil.Format( r1, 'CRC' ),
-        CurrencyUtil.Format( r2, 'USD' ),
-        CurrencyUtil.Format( r3, 'CRC' )
-    );
+// forkJoin([
+//     CurrencyService.Convert('USD', 'CRC', 5000),
+//     CurrencyService.Convert('CRC', 'USD', 100000),
+//     CurrencyService.Convert('EUR', 'CRC', 100)
+// ]).subscribe(([r1, r2, r3]) => {
+//     console.log(
+//         CurrencyUtil.Format( r1, 'CRC' ),
+//         CurrencyUtil.Format( r2, 'USD' ),
+//         CurrencyUtil.Format( r3, 'CRC' )
+//     );
+// });
+
+// console.log( CurrencyUtil.Format( 10000, CURRENCY_CODE.USD ) );
+
+TransferService.CreateTransfer('2', '3', 5000).pipe(
+    switchMap(transfer => {
+
+        console.log('========= TRANSFER =========');
+        console.log(transfer);
+
+        console.log('========= ACCOUNTS =========');
+        return AccountService.PrintAllAccounts();
+    })
+).subscribe({
+    next: () => {},
+    error: err => console.log(err.message)
 });

@@ -1,12 +1,12 @@
 
 import { Observable, of, forkJoin, map } from 'rxjs';
 
-const CURRENCY_CODE = {
+export const CURRENCY_CODE = {
     'USD': 'USD', 
     'CRC': 'CRC',
     'EUR': 'EUR'
 } as const;
-export type CurrencyCode = keyof typeof CURRENCY_CODE;
+export type CurrencyCode = typeof CURRENCY_CODE[keyof typeof CURRENCY_CODE];
 
 export type Currency = {
     id: string,
