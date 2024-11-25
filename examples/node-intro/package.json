@@ -13,6 +13,7 @@
     "start-modules": "tsc && node dist/modules/main.js",
     "start-promises": "tsc && node dist/promises/main.js",
     "start-rxjs": "tsc && node dist/rxjs/main.js",
+    "start-rxjs-operators": "tsc && node dist/rxjs/operators.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
